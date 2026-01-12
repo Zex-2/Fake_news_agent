@@ -26,6 +26,51 @@ A professional-grade AI Agent designed to verify claims, debunk fake news, and p
 git clone [https://github.com/your-username/fact-checking-agent.git](https://github.com/your-username/fact-checking-agent.git)
 cd fact-checking-agent
 
+```
+2. Set Up Virtual Environment
+It is recommended to use a virtual environment to manage dependencies.
+```
+# Windows
+python -m venv venv
+.\venv\Scripts\activate
 
+# Mac/Linux
 python3 -m venv venv
 source venv/bin/activate
+```
+3. Install Dependencies
+```
+pip install -r requirements.txt
+```
+🔑 Configuration
+Create a .env file in the root directory.
+
+Add your API keys as shown below. You will need keys from OpenAI, Google AI Studio, Tavily, SerpApi, and LangSmith.
+
+# .env file
+```
+# 1. LLM Providers
+OPENAI_API_KEY="sk-..."
+GOOGLE_API_KEY="AIzaSy..."
+
+# 2. Search Tools
+TAVILY_API_KEY="tvly-..."
+SERPAPI_API_KEY="..."
+
+# 3. LangSmith Tracing (Optional but Recommended)
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_ENDPOINT="[https://api.smith.langchain.com](https://api.smith.langchain.com)"
+LANGCHAIN_API_KEY="lsv2_..."
+LANGCHAIN_PROJECT="Fact_Checker_Agent"
+```
+🏃‍♂️ Usage
+Run the Streamlit application:
+```
+streamlit run app.py
+```
+How to Use
+1.Select Model: Use the Sidebar to choose between OpenAI and Google Gemini.
+
+2.Enter Query: Type a claim (e.g., "Did the Eiffel Tower catch fire recently?") or paste an Image URL for analysis.
+
+3.View Results: The agent will display its thought process ("Using Tool: web_fact_checker") and produce a final cited response.
