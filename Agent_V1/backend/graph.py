@@ -3,6 +3,7 @@ from langgraph.graph import StateGraph, END, START
 from langgraph.prebuilt import tools_condition, ToolNode
 from backend.state import AgentState
 from backend.agent import agent_node, tools
+from langgraph.checkpoint.memory import MemorySaver
 
 def build_graph():
     """
@@ -26,11 +27,11 @@ def build_graph():
 
     # Define the return loop from tools back to the agent
     workflow.add_edge("tools", "agent")
-
+    checkpointer = MemorySaver()
     # Compile the graph
     # In a production app, we would pass a 'checkpointer' here to enable memory persistence
     # across different user sessions.
-    return workflow.compile()
+    return workflow.compile(checkpointer=checkpointer)
 
 # Initialize the application instance
 app = build_graph()
