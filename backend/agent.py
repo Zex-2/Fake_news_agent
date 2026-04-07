@@ -31,12 +31,12 @@ def agent_node(state: AgentState, config: RunnableConfig):
     The primary reasoning node. 
     Accepts 'config' to dynamically switch between OpenAI and Gemini.
     """
-    # [FIX] 1. Get configuration from the user session
+    # 1. Get configuration from the user session
     configuration = config.get("configurable", {})
     selected_provider = configuration.get("model_provider", "openai")
     selected_model = configuration.get("model_name", "gpt-4o")
 
-    # [FIX] 2. Initialize the LLM *inside* the node based on selection
+    # 2. Initialize the LLM *inside* the node based on selection
     if selected_provider == "gemini":
         # Fallback to a valid Gemini model if the name implies GPT
         if "gpt" in selected_model:
@@ -57,7 +57,7 @@ def agent_node(state: AgentState, config: RunnableConfig):
             api_key=os.environ.get("OPENAI_API_KEY")
         )
 
-    # [FIX] 3. Bind tools to this specific LLM instance
+    # 3. Bind tools to this specific LLM instance
     llm_with_tools = llm.bind_tools(tools)
 
     # 4. Prepare the prompt
