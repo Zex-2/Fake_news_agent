@@ -10,7 +10,5 @@ pydantic
 langchain-experimental 
 langchain-google-genai
 serpapi
-<<<<<<< HEAD
 google-search-results
-=======
->>>>>>> feb20d16573a0e12de2dd874a20a004eb3d8ce67
+
