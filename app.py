@@ -46,7 +46,7 @@ with st.sidebar:
         model_options = ["gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo"]
         provider_key = "openai"
     else:
-        model_options = ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-2.5-pro"]
+        model_options = ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-2.5-pro", "gemini-3.1-flash-lite-preview"]
         provider_key = "gemini"
         
     selected_model = st.selectbox("Select Model", model_options)
